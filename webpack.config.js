@@ -52,7 +52,10 @@ module.exports = function build() {
                     use: {
                         loader: 'file-loader',
                         options: {
-                            name: 'images/[hash]-[name].[ext]'
+                            name: (resourcePath, resourceQuery) => {
+                                if (process.env.NODE_ENV === 'development') return '[path][name].[ext]';
+                                return 'images/[hash]-[name].[ext]';
+                            }
                         }
                     },
                 }
@@ -66,11 +69,12 @@ module.exports = function build() {
         ],
         resolve: {
             modules: [path.join(__dirname, 'src'), 'node_modules'],
-            extensions: ['.js', '.json', '.ts', '.tsx'],
+            extensions: ['.js', '.json', '.ts', '.tsx', '.png'],
             alias: {
                 react: path.join(__dirname, 'node_modules', 'react'),
                 '@app': path.resolve(__dirname, 'src'),
                 '@components': path.resolve(__dirname, 'src/components'),
+                '@pages': path.resolve(__dirname, 'src/pages'),
                 '@services': path.resolve(__dirname, 'src/services'),
                 '@config': path.resolve(__dirname, 'config'),
                 '@constants': path.resolve(__dirname, 'config/constants'),
