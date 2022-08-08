@@ -1,15 +1,13 @@
 import React, { useCallback } from 'react'
 
 import { useAppDispatch, useAppSelector } from '@app/state/hooks'
-import {
-    styled,
-    ToggleButton,
-    ToggleButtonGroup,
-} from '@mui/material'
 
 import { setSystemThemeMode } from '@app/state/slices/settings'
 
-import { StyledToggleButtonGroup, StyledToggleButton } from './StyledToggleButtons'
+import {
+    StyledToggleButtonGroup,
+    StyledToggleButton,
+} from './StyledToggleButtons'
 
 export default function ChangeThemeButton() {
     const dispatch = useAppDispatch()

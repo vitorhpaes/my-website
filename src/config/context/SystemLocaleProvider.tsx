@@ -1,6 +1,5 @@
-import { useAppSelector } from '@app/state/hooks'
 import React, { createContext, useCallback, useMemo } from 'react'
-import SystemThemeWrapper from '../SystemThemeWrapper'
+import { useAppSelector } from '@app/state/hooks'
 
 interface LocaleContextProps {
     translate: (key: string, values: Object) => string
@@ -12,8 +11,8 @@ const LocaleContext = createContext({} as LocaleContextProps)
 const SystemLocaleProvider: React.FC<{ children: React.ReactNode }> = ({
     children,
 }) => {
-    const { language: currentLanguage } = useAppSelector(app => app.settings)
-    const translate = useCallback((key: string, values: Object) => {
+    const { language: currentLanguage } = useAppSelector((app) => app.settings)
+    const translate = useCallback((_: string, __: Object) => {
         return ''
     }, [])
 

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/state/hooks'
 import { setSystemLanguage } from '@app/state/slices/settings'
-import { useTheme } from '@mui/material'
+
 import {
     StyledToggleButton,
     StyledToggleButtonGroup,

@@ -1,8 +1,7 @@
 import React from 'react'
 import { FiTwitter, FiInstagram, FiLinkedin, FiGithub } from 'react-icons/fi'
 import { Link, styled, useTheme } from '@mui/material'
-import { borderRadius } from 'polished'
-import { Spacing } from '@ds';
+import { Spacing } from '@ds'
 
 interface SocialMediaProps {
     twitter: string
@@ -12,17 +11,15 @@ interface SocialMediaProps {
 }
 
 const StyledSocialMedia = styled(Spacing)`
-
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     width: 100%;
-
 `
 
 const StyledLink = styled(Link)`
-    margin-top: ${({theme}) => theme.size.small}px;
+    margin-top: ${({ theme }) => theme.size.small}px;
 `
 
 const SocialMedia: React.FC<SocialMediaProps> = ({
@@ -33,7 +30,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({
 }) => {
     const theme = useTheme()
     return (
-        <StyledSocialMedia px='small' py="small">
+        <StyledSocialMedia px="small" py="small">
             <StyledLink href={twitter} target="_blank">
                 <FiTwitter
                     size={theme.size.large}

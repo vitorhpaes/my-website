@@ -1,11 +1,9 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 
 import darkBackground from '@app/assets/images/background_dark.jpg'
-import { styled, ToggleButton, ToggleButtonGroup } from '@mui/material'
+import { styled } from '@mui/material'
 import { Spacing } from '@ds'
 import { rgba } from 'polished'
-import { useAppDispatch, useAppSelector } from '@app/state/hooks'
-import { setSystemThemeMode } from '@app/state/slices/settings'
 import ChangeThemeButton from '@app/components/SystemConfigButtons/ChangeThemeButton'
 import ChangeLanguageButton from '@app/components/SystemConfigButtons/ChangeLanguageButton'
 

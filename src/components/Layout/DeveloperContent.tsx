@@ -1,7 +1,6 @@
 import React from 'react'
 import { SizeKey, styled } from '@mui/material'
 import { borderRadius, rgba } from 'polished'
-import { Spacing } from '@ds'
 import SocialMedia from './../SocialMedia/SocialMedia'
 
 interface StyledContentProps {

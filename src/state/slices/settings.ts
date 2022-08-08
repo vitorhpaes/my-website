@@ -9,7 +9,7 @@ interface SettingsState {
 
 const initialState: SettingsState = {
     language: 'enGB',
-    themeMode: 'dark'
+    themeMode: 'dark',
 }
 
 export const settingsSlice = createSlice({
@@ -20,7 +20,10 @@ export const settingsSlice = createSlice({
         setSystemLanguage: (state, action: PayloadAction<'ptBR' | 'enGB'>) => {
             state.language = action.payload
         },
-        setSystemThemeMode: (state, action: PayloadAction<'dark' | 'light'>) => {
+        setSystemThemeMode: (
+            state,
+            action: PayloadAction<'dark' | 'light'>
+        ) => {
             console.log(action.payload)
             state.themeMode = action.payload
         },
