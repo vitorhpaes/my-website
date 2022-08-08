@@ -10,7 +10,7 @@ import HomePage from './pages/HomePage'
 import './index.css'
 
 const App = () => {
-    const [themeMode, setThemeMode] = useState<'light' | 'dark'>('dark')
+    const [themeMode] = useState<'light' | 'dark'>('dark')
     const theme = useMemo(() => createSiteTheme(themeMode), [themeMode])
 
     return (

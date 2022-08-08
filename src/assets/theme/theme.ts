@@ -32,11 +32,18 @@ const brandColors = {
     },
 }
 
+const backgroundColors = (mode: 'dark' | 'light') =>
+    mode === 'dark' && {
+        default: '#1E152A',
+        paper: '#02040F',
+    }
+
 export const createSiteTheme = (mode: 'light' | 'dark') =>
     createTheme({
         palette: {
             mode,
             brand: brandColors,
+            background: backgroundColors(mode),
         },
         size,
         typography: {

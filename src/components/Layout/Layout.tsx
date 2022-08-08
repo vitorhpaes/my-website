@@ -1,12 +1,12 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Content from './Content'
-import Navbar from './Navbar'
+import DeveloperContent from './DeveloperContent'
 
 const Layout: React.FC = () => {
     return (
         <>
-            <Navbar />
+            <DeveloperContent />
             <Content>
                 <Outlet />
             </Content>

@@ -74,7 +74,7 @@ module.exports = function build() {
                 react: path.join(__dirname, 'node_modules', 'react'),
                 '@app': path.resolve(__dirname, 'src'),
                 '@components': path.resolve(__dirname, 'src/components'),
-                '@ds': path.resolve(__dirname, 'src/components/DesignSystem'),
+                '@ds': path.resolve(__dirname, 'src/components/DesignSystem/index'),
                 '@pages': path.resolve(__dirname, 'src/pages'),
                 '@services': path.resolve(__dirname, 'src/services'),
                 '@config': path.resolve(__dirname, 'config'),
