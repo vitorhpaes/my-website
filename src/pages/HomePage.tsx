@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import darkBackground from '@app/assets/images/background_dark.jpg'
-import { styled } from '@mui/material'
+import { styled, ToggleButton, ToggleButtonGroup } from '@mui/material'
 import { Spacing } from '@ds'
 import { rgba } from 'polished'
+import { useAppDispatch, useAppSelector } from '@app/state/hooks'
+import { setSystemThemeMode } from '@app/state/slices/settings'
+import ChangeThemeButton from '@app/components/ChangeThemeButton/ChangeThemeButton'
 
 const StyledBackground = styled('div')`
     display: flex;
@@ -36,6 +39,9 @@ const StyledCard = styled('div')`
 const HomePage: React.FC = () => {
     return (
         <StyledBackground>
+            <StyledCard>
+                <ChangeThemeButton />
+            </StyledCard>
             <StyledCard>
                 <Spacing px="medium" py="small">
                     Hi, i'm Vitor
