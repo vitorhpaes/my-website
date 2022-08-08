@@ -1,5 +1,4 @@
 import '@mui/material'
-import createPalette from '@mui/material/styles/createPalette'
 
 declare module '@mui/material' {
     interface FontSizeProps {
@@ -79,5 +78,6 @@ declare module '@mui/material' {
     }
 
     interface Theme extends CustomTheme {}
+    interface ITheme extends Theme, CustomTheme {}
     interface ThemeOptions extends CustomTheme {}
 }

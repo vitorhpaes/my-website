@@ -4,6 +4,8 @@ import darkBackground from '@app/assets/images/background_dark.jpg'
 import { styled } from '@mui/material'
 import { Spacing } from '@ds'
 import { rgba } from 'polished'
+import ChangeThemeButton from '@app/components/SystemConfigButtons/ChangeThemeButton'
+import ChangeLanguageButton from '@app/components/SystemConfigButtons/ChangeLanguageButton'
 
 const StyledBackground = styled('div')`
     display: flex;
@@ -36,6 +38,8 @@ const StyledCard = styled('div')`
 const HomePage: React.FC = () => {
     return (
         <StyledBackground>
+            <ChangeThemeButton />
+            <ChangeLanguageButton />
             <StyledCard>
                 <Spacing px="medium" py="small">
                     Hi, i'm Vitor

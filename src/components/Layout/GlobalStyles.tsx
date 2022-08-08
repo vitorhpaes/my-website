@@ -1,6 +1,5 @@
 import React from 'react'
 import { GlobalStyles, useTheme } from '@mui/material'
-import FreeBooter from '@app/assets/fonts/freebooter/FREEBSC_.ttf'
 
 const GlobalStylesMUI = () => {
     const theme = useTheme()

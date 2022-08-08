@@ -1,29 +1,22 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { ThemeProvider } from '@mui/material'
+import React from 'react'
 import GlobalStylesMUI from './components/Layout/GlobalStyles'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { createSiteTheme } from '@app/assets/theme/theme'
 
-import Layout from './components/Layout/Layout'
-import HomePage from './pages/HomePage'
+import { Provider as StoreProvider } from 'react-redux'
+import { store } from './state/store'
+
+import ConfigProvider from './config/ConfigProvider'
+import Router from './routes'
 
 import './index.css'
 
 const App = () => {
-    const [themeMode] = useState<'light' | 'dark'>('dark')
-    const theme = useMemo(() => createSiteTheme(themeMode), [themeMode])
-
     return (
-        <ThemeProvider theme={theme}>
-            <GlobalStylesMUI />
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Layout />}>
-                        <Route index element={<HomePage />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </ThemeProvider>
+        <StoreProvider store={store}>
+            <ConfigProvider>
+                <GlobalStylesMUI />
+                <Router />
+            </ConfigProvider>
+        </StoreProvider>
     )
 }
 
