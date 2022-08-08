@@ -1,6 +1,6 @@
 import React from 'react'
 
-import bg07 from '@app/assets/images/bg07.jpg'
+import darkBackground from '@app/assets/images/background_dark.jpg'
 import { styled } from '@mui/material'
 import { Spacing } from '@ds'
 import { rgba } from 'polished'
@@ -10,7 +10,7 @@ const StyledBackground = styled('div')`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-image: url(${bg07});
+    background-image: url(${darkBackground});
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
