@@ -29,32 +29,16 @@ const StyledContent = styled('div')<StyledContentProps>`
     ${({ theme, radiusSide }) => borderRadius(radiusSide, theme.size.small)}
 `
 
-const StyledDeveloperName = styled('div')`
-    font-family: 'Lavishly Yours';
-    color: ${({ theme }) =>
-        theme.palette.getContrastText(theme.palette.grey[800])};
-    font-size: 45px;
-    line-height: 55px;
-    font-weight: 400;
-`
-
 const DeveloperContent: React.FC = () => {
     return (
-        <>
-            <StyledContent top="largeXX" right="none" radiusSide="left">
-                <SocialMedia
-                    twitter="https://twitter.com/vitor__paes"
-                    instagram="https://www.instagram.com/vitorhpaes"
-                    linkedin="https://www.linkedin.com/in/vitor-paes-2880541b2"
-                    github="https://github.com/vitorhpaes"
-                />
-            </StyledContent>
-            <StyledContent top="none" left="largeX" radiusSide="bottom">
-                <Spacing px="standard">
-                    <StyledDeveloperName>Vítor Paes</StyledDeveloperName>
-                </Spacing>
-            </StyledContent>
-        </>
+        <StyledContent top="largeXX" right="none" radiusSide="left">
+            <SocialMedia
+                twitter="https://twitter.com/vitor__paes"
+                instagram="https://www.instagram.com/vitorhpaes"
+                linkedin="https://www.linkedin.com/in/vitor-paes-2880541b2"
+                github="https://github.com/vitorhpaes"
+            />
+        </StyledContent>
     )
 }
 
