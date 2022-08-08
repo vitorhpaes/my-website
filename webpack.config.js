@@ -47,7 +47,7 @@ module.exports = function build() {
                     use: ["style-loader", "css-loader"]
                 },
                 {
-                    test: /\.(png|jp(e*)g|svg|gif)$/,
+                    test: /\.(png|jp(e*)g|svg|gif|ttf)$/,
                     exclude: /node_modules/,
                     use: {
                         loader: 'file-loader',
@@ -69,11 +69,12 @@ module.exports = function build() {
         ],
         resolve: {
             modules: [path.join(__dirname, 'src'), 'node_modules'],
-            extensions: ['.js', '.json', '.ts', '.tsx', '.png'],
+            extensions: ['.js', '.json', '.ts', '.tsx', '.png', '.tff'],
             alias: {
                 react: path.join(__dirname, 'node_modules', 'react'),
                 '@app': path.resolve(__dirname, 'src'),
                 '@components': path.resolve(__dirname, 'src/components'),
+                '@ds': path.resolve(__dirname, 'src/components/DesignSystem'),
                 '@pages': path.resolve(__dirname, 'src/pages'),
                 '@services': path.resolve(__dirname, 'src/services'),
                 '@config': path.resolve(__dirname, 'config'),

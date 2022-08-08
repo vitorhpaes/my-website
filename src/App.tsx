@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { ThemeProvider } from '@mui/material'
+import GlobalStylesMUI from './components/Layout/GlobalStyles'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { createSiteTheme } from '@app/assets/theme/theme'
 
+import Layout from './components/Layout/Layout'
 import HomePage from './pages/HomePage'
 
-import theme from './assets/styles/theme'
-import Layout from './components/Layout/Layout'
-import GlobalStylesMUI from './components/Layout/GlobalStyles'
+import './index.css'
 
 const App = () => {
+    const [themeMode, setThemeMode] = useState<'light' | 'dark'>('dark')
+    const theme = useMemo(() => createSiteTheme(themeMode), [themeMode])
+
     return (
         <ThemeProvider theme={theme}>
             <GlobalStylesMUI />
