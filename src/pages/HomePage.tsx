@@ -6,7 +6,8 @@ import { Spacing } from '@ds'
 import { rgba } from 'polished'
 import { useAppDispatch, useAppSelector } from '@app/state/hooks'
 import { setSystemThemeMode } from '@app/state/slices/settings'
-import ChangeThemeButton from '@app/components/ChangeThemeButton/ChangeThemeButton'
+import ChangeThemeButton from '@app/components/SystemConfigButtons/ChangeThemeButton'
+import ChangeLanguageButton from '@app/components/SystemConfigButtons/ChangeLanguageButton'
 
 const StyledBackground = styled('div')`
     display: flex;
@@ -39,9 +40,8 @@ const StyledCard = styled('div')`
 const HomePage: React.FC = () => {
     return (
         <StyledBackground>
-            <StyledCard>
-                <ChangeThemeButton />
-            </StyledCard>
+            <ChangeThemeButton />
+            <ChangeLanguageButton />
             <StyledCard>
                 <Spacing px="medium" py="small">
                     Hi, i'm Vitor
