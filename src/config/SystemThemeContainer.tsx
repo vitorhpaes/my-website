@@ -3,7 +3,7 @@ import { useAppSelector } from '@app/state/hooks'
 import { ThemeProvider } from '@mui/material'
 import React, { useMemo } from 'react'
 
-const SystemThemeWrapper: React.FC<{ children: React.ReactNode }> = ({
+const SystemThemeContainer: React.FC<{ children: React.ReactNode }> = ({
     children,
 }) => {
     const { themeMode } = useAppSelector((app) => app.settings)
@@ -12,4 +12,4 @@ const SystemThemeWrapper: React.FC<{ children: React.ReactNode }> = ({
     return <ThemeProvider theme={theme}>{children}</ThemeProvider>
 }
 
-export default SystemThemeWrapper
+export default SystemThemeContainer

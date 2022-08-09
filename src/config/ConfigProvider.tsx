@@ -1,14 +1,18 @@
 import React from 'react'
-import SystemLocaleProvider from './context/SystemLocaleProvider'
-import SystemThemeWrapper from './SystemThemeWrapper'
+
+import TranslationsIntlContainer from './TranslationsIntlContainer'
+import SystemThemeWrapper from './SystemThemeContainer'
+import LocaleContextProvider from './context/LocaleContextProvider'
 
 const ConfigProvider: React.FC<{ children: React.ReactNode }> = ({
     children,
 }) => {
     return (
-        <SystemLocaleProvider>
-            <SystemThemeWrapper>{children}</SystemThemeWrapper>
-        </SystemLocaleProvider>
+        <TranslationsIntlContainer>
+            <LocaleContextProvider>
+                <SystemThemeWrapper>{children}</SystemThemeWrapper>
+            </LocaleContextProvider>
+        </TranslationsIntlContainer>
     )
 }
 
