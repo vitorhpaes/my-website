@@ -15,7 +15,7 @@ const StyledPaginationWrapper = styled('div')`
     display: flex;
     align-items: center;
     justify-content: center;
-    top: ${({ theme }) => theme.size.hugeX}px;
+    top: ${({ theme }) => theme.size.huge}px;
     gap: ${({ theme }) => theme.size.medium}px;
 `
 
