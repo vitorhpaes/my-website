@@ -1,10 +1,12 @@
 import React from 'react'
+import { isDesktop } from '@app/drivers/device'
 import { SizeKey, styled } from '@mui/material'
 import { borderRadius } from 'polished'
 import SocialMedia from './../SocialMedia/SocialMedia'
 import { Card } from '@ds'
 
 interface StyledContentProps {
+    isMobile: boolean
     left?: SizeKey
     right?: SizeKey
     top?: SizeKey
@@ -19,6 +21,9 @@ const StyledCard = styled(Card)<StyledContentProps>`
     justify-content: center;
     flex-direction: column;
     position: fixed;
+    border-radius: 0;
+
+    ${({ isMobile }) => isMobile && `width: 100%;`}
 
     ${({ theme, top }) => top && `top: ${theme.size[top]}px;`}
     ${({ theme, bottom }) => bottom && `bottom: ${theme.size[bottom]}px;`}
@@ -29,8 +34,16 @@ const StyledCard = styled(Card)<StyledContentProps>`
 `
 
 const DeveloperContent: React.FC = () => {
+    const isDeviceDesktop = isDesktop()
     return (
-        <StyledCard top="large" right="none" radiusSide="left">
+        <StyledCard
+            top={isDeviceDesktop ? 'large' : null}
+            right={isDeviceDesktop ? 'none' : null}
+            radiusSide={isDeviceDesktop ? 'left' : 'top'}
+            bottom={!isDeviceDesktop ? 'none' : null}
+            left={!isDeviceDesktop ? 'none' : null}
+            isMobile={!isDeviceDesktop}
+        >
             <SocialMedia
                 twitter="https://twitter.com/vitor__paes"
                 instagram="https://www.instagram.com/vitorhpaes"

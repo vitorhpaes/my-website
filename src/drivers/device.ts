@@ -28,4 +28,4 @@ export const isMobile = () => {
     return false
 }
 
-export const isDesktop = !isMobile()
+export const isDesktop = () => !isMobile()

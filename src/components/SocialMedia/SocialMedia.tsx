@@ -2,6 +2,7 @@ import React from 'react'
 import { FiTwitter, FiInstagram, FiLinkedin, FiGithub } from 'react-icons/fi'
 import { Link, styled, useTheme } from '@mui/material'
 import { Spacing } from '@ds'
+import { isMobile } from '@app/drivers/device'
 
 interface SocialMediaProps {
     twitter: string
@@ -10,16 +11,18 @@ interface SocialMediaProps {
     github: string
 }
 
-const StyledSocialMedia = styled(Spacing)`
+interface StyledSocialMediaProps {
+    isMobile: boolean
+}
+
+const StyledSocialMedia = styled(Spacing)<StyledSocialMediaProps>`
     display: flex;
-    flex-direction: column;
+    ${({ isMobile, theme }) => !isMobile && `gap: ${theme.size.medium}px;`}
+    ${({ isMobile }) => isMobile && `width: 100%`}
+    flex-direction: ${({ isMobile }) => (isMobile ? 'column' : 'row')};
     justify-content: space-around;
     align-items: center;
     width: 100%;
-`
-
-const StyledLink = styled(Link)`
-    margin-top: ${({ theme }) => theme.size.small}px;
 `
 
 const SocialMedia: React.FC<SocialMediaProps> = ({
@@ -29,32 +32,33 @@ const SocialMedia: React.FC<SocialMediaProps> = ({
     github,
 }) => {
     const theme = useTheme()
+    const isDeviceMobile = isMobile()
     return (
-        <StyledSocialMedia px="small" py="small">
-            <StyledLink href={twitter} target="_blank">
+        <StyledSocialMedia px="small" py="small" isMobile={isDeviceMobile}>
+            <Link href={twitter} target="_blank">
                 <FiTwitter
                     size={theme.size.large}
                     color={theme.palette.grey[100]}
                 />
-            </StyledLink>
-            <StyledLink href={instagram} target="_blank">
+            </Link>
+            <Link href={instagram} target="_blank">
                 <FiInstagram
                     size={theme.size.large}
                     color={theme.palette.grey[100]}
                 />
-            </StyledLink>
-            <StyledLink href={linkedin} target="_blank">
+            </Link>
+            <Link href={linkedin} target="_blank">
                 <FiLinkedin
                     size={theme.size.large}
                     color={theme.palette.grey[100]}
                 />
-            </StyledLink>
-            <StyledLink href={github} target="_blank">
+            </Link>
+            <Link href={github} target="_blank">
                 <FiGithub
                     size={theme.size.large}
                     color={theme.palette.grey[100]}
                 />
-            </StyledLink>
+            </Link>
         </StyledSocialMedia>
     )
 }
