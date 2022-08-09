@@ -19,7 +19,7 @@ const StyledSocialMedia = styled(Spacing)<StyledSocialMediaProps>`
     display: flex;
     ${({ isMobile, theme }) => !isMobile && `gap: ${theme.size.medium}px;`}
     ${({ isMobile }) => isMobile && `width: 100%`}
-    flex-direction: ${({ isMobile }) => (isMobile ? 'column' : 'row')};
+    flex-direction: ${({ isMobile }) => (isMobile ? 'row' : 'column')};
     justify-content: space-around;
     align-items: center;
     width: 100%;
