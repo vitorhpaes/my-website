@@ -24,7 +24,6 @@ export default function ChangeThemeButton() {
         <StyledToggleButtonGroup
             value={themeMode}
             exclusive
-            top={'largeXX'}
             onChange={(_, value: 'light' | 'dark') =>
                 handleChangeThemeMode(value)
             }

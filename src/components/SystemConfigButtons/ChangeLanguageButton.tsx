@@ -22,7 +22,6 @@ const ChangeLanguageButton = () => {
         <StyledToggleButtonGroup
             value={language}
             exclusive
-            top={'medium'}
             onChange={(_, value: 'enGB' | 'ptBR') =>
                 handleChangeThemeMode(value)
             }

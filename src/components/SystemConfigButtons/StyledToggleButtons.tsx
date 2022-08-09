@@ -1,14 +1,7 @@
-import { styled, ToggleButton, ToggleButtonGroup, SizeKey } from '@mui/material'
+import { styled, ToggleButton, ToggleButtonGroup } from '@mui/material'
 
-interface ButtonGroupProps {
-    top?: SizeKey
-}
-
-export const StyledToggleButtonGroup = styled(
-    ToggleButtonGroup
-)<ButtonGroupProps>`
-    position: absolute;
-    top: ${({ theme, top }) => theme.size[top]}px;
+export const StyledToggleButtonGroup = styled(ToggleButtonGroup)`
+    z-index: 9999;
 `
 
 export const StyledToggleButton = styled(ToggleButton)`

@@ -3,14 +3,14 @@ import { BrowserRouter, Route, Routes as RoutesWrapper } from 'react-router-dom'
 
 import Layout from '@app/components/Layout/Layout'
 
-import HomePage from '@app/pages/HomePage'
+import PageControl from '@app/components/PageControl/PageControl'
 
 const Router: React.FC = () => {
     return (
         <BrowserRouter>
             <RoutesWrapper>
                 <Route path="/" element={<Layout />}>
-                    <Route index element={<HomePage />} />
+                    <Route index element={<PageControl />} />
                 </Route>
             </RoutesWrapper>
         </BrowserRouter>

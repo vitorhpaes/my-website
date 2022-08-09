@@ -2,5 +2,6 @@
     "welcome": "Oi, eu sou o {name}",
     "fullstack": "Sou desenvolvedor full-stack",
     "frontend": "Front-end Semi-Senior",
-    "backend": "Back-end pleno"
+    "backend": "Back-end pleno",
+    "madeWith": "Este site foi desenvolvido com "
 }

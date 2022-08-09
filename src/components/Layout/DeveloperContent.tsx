@@ -13,7 +13,7 @@ interface StyledContentProps {
 }
 
 const StyledCard = styled(Card)<StyledContentProps>`
-    z-index: 1;
+    z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;

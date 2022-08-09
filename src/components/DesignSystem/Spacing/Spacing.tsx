@@ -88,17 +88,23 @@ const StyledSpacing = styled('div')<StyledSpacingProps>`
 
 interface SpacingProps extends StyledSpacingProps {
     children: React.ReactElement | React.ReactElement[] | React.ReactNode
+    wrapper?: boolean
 }
 
 const Spacing: React.FC<SpacingProps> = ({
     children,
     eachChildren,
+    wrapper = true,
     ...props
 }) => {
     const isMultiChildren = Children.count(children) > 1
     const theme = useTheme()
 
-    if ((isMultiChildren && !eachChildren) || !React.isValidElement(children))
+    if (
+        wrapper ||
+        (isMultiChildren && !eachChildren) ||
+        !React.isValidElement(children)
+    )
         return <StyledSpacing {...props}>{children}</StyledSpacing>
 
     const styledChild = Children.map(children, (child) => {
