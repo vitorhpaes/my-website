@@ -18,13 +18,14 @@ export const settingsSlice = createSlice({
     initialState,
     reducers: {
         setSystemLanguage: (state, action: PayloadAction<'ptBR' | 'enGB'>) => {
+            if (!action.payload) return
             state.language = action.payload
         },
         setSystemThemeMode: (
             state,
             action: PayloadAction<'dark' | 'light'>
         ) => {
-            console.log(action.payload)
+            if (!action.payload) return
             state.themeMode = action.payload
         },
     },

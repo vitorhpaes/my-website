@@ -1,19 +1,45 @@
 import React from 'react'
-
 import darkBackground from '@app/assets/images/background_dark.jpg'
-import { styled } from '@mui/material'
-import { Spacing } from '@ds'
-import { rgba } from 'polished'
+import lightBackground from '@app/assets/images/old/bg07.jpg'
+
+import { Divider, styled, Typography } from '@mui/material'
+import { Spacing, Card } from '@ds'
 import ChangeThemeButton from '@app/components/SystemConfigButtons/ChangeThemeButton'
 import ChangeLanguageButton from '@app/components/SystemConfigButtons/ChangeLanguageButton'
-import { useLocale } from '@app/config/context/LocaleContextProvider'
 
-const StyledBackground = styled('div')`
+import {
+    SiRedux,
+    SiReact,
+    SiTypescript,
+    SiWebpack,
+    SiBabel,
+    SiEslint,
+    SiPrettier,
+    SiJest,
+    SiGithub,
+    SiMaterialui,
+    SiStyledcomponents,
+    SiStorybook,
+} from 'react-icons/si'
+
+import { useLocale } from '@app/config/context/LocaleContextProvider'
+import { useAppSelector } from '@app/state/hooks'
+
+interface StyledBackgroundProps {
+    themeMode?: 'dark' | 'light'
+}
+
+const themeModeBackground = {
+    dark: darkBackground,
+    light: lightBackground,
+}
+
+const StyledBackground = styled('div')<StyledBackgroundProps>`
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-image: url(${darkBackground});
+    background-image: url(${({ themeMode }) => themeModeBackground[themeMode]});
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -23,33 +49,96 @@ const StyledBackground = styled('div')`
     left: 0;
 `
 
-const StyledCard = styled('div')`
-    font-family: 'Comfortaa';
-    user-select: none;
-    color: ${({ theme }) => theme.palette.text.primary};
-    background-color: ${({ theme }) =>
-        rgba(theme.palette.background.paper, 0.7)};
-    border-radius: ${({ theme }) => theme.size.quarck}px;
-    box-shadow: ${({ theme }) => theme.shadows[11]};
-    font-size: 45px;
-    line-height: 55px;
-    font-weight: 400;
+const StyledTechCard = styled(Card)`
+    position: fixed;
+    bottom: 0;
+    right: ${({ theme }) => theme.size.largeX}px;
+
+    > * {
+        display: flex;
+        align-items: space-between;
+        justify-content: center;
+    }
 `
 
 const HomePage: React.FC = () => {
     const { translate } = useLocale()
+    const { themeMode } = useAppSelector((app) => app.settings)
 
     return (
-        <StyledBackground>
+        <StyledBackground themeMode={themeMode}>
             <ChangeThemeButton />
             <ChangeLanguageButton />
-            <StyledCard>
+            <Card>
                 <Spacing px="medium" py="small">
-                    {translate('welcome', {
-                        name: 'Vitor',
-                    })}
+                    <Typography variant="h3">
+                        {translate('welcome', {
+                            name: 'Vítor',
+                        })}
+                    </Typography>
                 </Spacing>
-            </StyledCard>
+            </Card>
+            <Spacing my="small">
+                <Card>
+                    <Spacing px="medium" py="small">
+                        <Typography variant="body1" textAlign="center">
+                            {translate('fullstack')}
+                        </Typography>
+                        <Typography variant="body1" textAlign="center">
+                            {translate('frontend')}
+                        </Typography>
+                        <Typography variant="body1" textAlign="center">
+                            {translate('backend')}
+                        </Typography>
+                    </Spacing>
+                </Card>
+            </Spacing>
+            <StyledTechCard>
+                <Spacing px="medium" py="small">
+                    <Typography variant="body2">
+                        This website was made with
+                    </Typography>
+                    <Spacing ml="small">
+                        <SiReact size={20} />
+                    </Spacing>
+                    <Spacing ml="small">
+                        <SiTypescript size={20} />
+                    </Spacing>
+                    <Spacing ml="small">
+                        <SiRedux size={20} />
+                    </Spacing>
+                    <Spacing ml="small">
+                        <SiMaterialui size={20} />
+                    </Spacing>
+                    <Spacing ml="small">
+                        <SiStyledcomponents size={25} />
+                    </Spacing>
+                    <Spacing mx="small">
+                        <SiStorybook size={20} />
+                    </Spacing>
+                    <Divider style={{ borderLeftWidth: 'thin' }} />
+                    <Spacing ml="small">
+                        <SiWebpack size={20} />
+                    </Spacing>
+                    <Spacing mx="small">
+                        <SiBabel size={20} />
+                    </Spacing>
+                    <Divider style={{ borderLeftWidth: 'thin' }} />
+                    <Spacing ml="small">
+                        <SiJest size={20} />
+                    </Spacing>
+                    <Spacing ml="small">
+                        <SiEslint size={20} />
+                    </Spacing>
+                    <Spacing mx="small">
+                        <SiPrettier size={20} />
+                    </Spacing>
+                    <Divider style={{ borderLeftWidth: 'thin' }} />
+                    <Spacing ml="small">
+                        <SiGithub size={20} />
+                    </Spacing>
+                </Spacing>
+            </StyledTechCard>
         </StyledBackground>
     )
 }

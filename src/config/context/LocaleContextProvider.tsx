@@ -2,7 +2,7 @@ import React, { createContext, useCallback, useContext } from 'react'
 import { useIntl } from 'react-intl'
 
 interface LocaleContextProps {
-    translate: (key: string, values: Object) => string
+    translate: (key: string, values?: Object) => string
 }
 
 const LocaleContext = createContext({} as LocaleContextProps)
@@ -13,7 +13,7 @@ const LocaleContextProvider: React.FC<{ children: React.ReactNode }> = ({
     const intl = useIntl()
 
     const translate = useCallback(
-        (key: string, values: any) => intl.formatMessage({ id: key }, values),
+        (key: string, values?: any) => intl.formatMessage({ id: key }, values),
         [intl]
     )
 
