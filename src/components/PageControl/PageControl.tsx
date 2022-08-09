@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import HomePage from '@app/pages/HomePage'
-import { Mousewheel, Pagination } from 'swiper'
+import SwiperClass, { Controller, Mousewheel, Pagination } from 'swiper'
 import { styled } from '@mui/material'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import 'swiper/css'
 import 'swiper/css/pagination'
+import CustomSwiperPagination from './CustomSwiperPagination'
 
 const StyledSwiper = styled(Swiper)`
     width: 100%;
@@ -13,23 +14,30 @@ const StyledSwiper = styled(Swiper)`
 `
 
 const PageControl: React.FC = () => {
-    return (
-        <StyledSwiper
-            direction="vertical"
-            slidesPerView={1}
-            spaceBetween={0}
-            mousewheel
-            pagination={{
-                clickable: true,
-            }}
-            modules={[Mousewheel, Pagination]}
-        >
-            <SwiperSlide>
-                <HomePage />
-            </SwiperSlide>
+    const [controller, setController] = useState<SwiperClass>(null)
 
-            <SwiperSlide>Page</SwiperSlide>
-        </StyledSwiper>
+    return (
+        <>
+            <CustomSwiperPagination controller={controller} />
+            <StyledSwiper
+                modules={[Mousewheel, Pagination, Controller]}
+                initialSlide={0}
+                direction="vertical"
+                slidesPerView={1}
+                spaceBetween={0}
+                mousewheel
+                pagination={{
+                    clickable: true,
+                }}
+                controller={{ control: controller }}
+                onSwiper={setController}
+            >
+                <SwiperSlide>
+                    <HomePage />
+                </SwiperSlide>
+                <SwiperSlide>Page</SwiperSlide>
+            </StyledSwiper>
+        </>
     )
 }
 

@@ -6,10 +6,9 @@ import ChangeThemeButton from '../SystemConfigButtons/ChangeThemeButton'
 const StyledHeader = styled('div')`
     display: flex;
     width: 100vw;
-    flex-direction: column;
-    gap: ${({ theme }) => theme.size.small}px;
+    gap: ${({ theme }) => theme.size.large}px;
 
-    align-items: center;
+    justify-content: center;
 
     position: absolute;
     top: ${({ theme }) => theme.size.large}px;
@@ -18,8 +17,8 @@ const StyledHeader = styled('div')`
 const SettingsHeader: React.FC = () => {
     return (
         <StyledHeader>
-            <ChangeThemeButton />
             <ChangeLanguageButton />
+            <ChangeThemeButton />
         </StyledHeader>
     )
 }
