@@ -6,6 +6,7 @@ import { Spacing } from '@ds'
 import { rgba } from 'polished'
 import ChangeThemeButton from '@app/components/SystemConfigButtons/ChangeThemeButton'
 import ChangeLanguageButton from '@app/components/SystemConfigButtons/ChangeLanguageButton'
+import { useLocale } from '@app/config/context/LocaleContextProvider'
 
 const StyledBackground = styled('div')`
     display: flex;
@@ -36,13 +37,17 @@ const StyledCard = styled('div')`
 `
 
 const HomePage: React.FC = () => {
+    const { translate } = useLocale()
+
     return (
         <StyledBackground>
             <ChangeThemeButton />
             <ChangeLanguageButton />
             <StyledCard>
                 <Spacing px="medium" py="small">
-                    Hi, i'm Vitor
+                    {translate('welcome', {
+                        name: 'Vitor',
+                    })}
                 </Spacing>
             </StyledCard>
         </StyledBackground>

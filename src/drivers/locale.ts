@@ -1,14 +1,14 @@
-import ptBR from '../config/messages/ptBR.json'
 import enGB from '../config/messages/enGB.json'
+import ptBR from '../config/messages/ptBR.json'
 
 const locales = {
-    enGB: {
-        language: 'enGB',
-        messages: enGB,
-    },
     ptBR: {
-        language: 'ptBR',
+        language: 'pt-br',
         messages: ptBR,
+    },
+    enGB: {
+        language: 'en-gb',
+        messages: enGB,
     },
 }
 

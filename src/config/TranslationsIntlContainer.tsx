@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { useAppSelector } from '@app/state/hooks'
 import getIntlConfiguration from '@app/drivers/locale'
 import { IntlProvider } from 'react-intl'
@@ -12,10 +12,9 @@ const TranslationsIntlContainer: React.FC<TranslationsIntlContainerProps> = ({
 }) => {
     const { language: currentLanguage } = useAppSelector((app) => app.settings)
 
-    const { language, messages } = useMemo(
-        () => getIntlConfiguration(currentLanguage),
-        []
-    )
+    const { language, messages } = getIntlConfiguration(currentLanguage)
+
+    console.log({ language, messages })
 
     return (
         <IntlProvider locale={language} messages={messages}>
