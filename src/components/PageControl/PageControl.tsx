@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 
 import 'swiper/css'
 import 'swiper/css/pagination'
-import CustomSwiperPagination from './CustomSwiperPagination'
+import CustomSwiperPagination from './CustomSwiperPagination/CustomSwiperPagination'
 
 const StyledSwiper = styled(Swiper)`
     width: 100%;
