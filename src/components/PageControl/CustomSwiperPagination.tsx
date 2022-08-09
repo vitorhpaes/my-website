@@ -1,14 +1,19 @@
-import { styled, Typography } from '@mui/material'
 import React from 'react'
+import { styled, Typography } from '@mui/material'
 import SwiperClass from 'swiper'
-import { Card } from '@ds'
 import pageConfig from './config'
+import { isMobile } from '@app/drivers/device'
+import { Card } from '@ds'
 
 interface CustomSwiperPaginationProps {
     controller: SwiperClass
 }
 
-const StyledPaginationWrapper = styled('div')`
+interface StyledPaginaationWrapperProps {
+    isMobile: boolean
+}
+
+const StyledPaginationWrapper = styled('div')<StyledPaginaationWrapperProps>`
     position: fixed;
     z-index: 9999;
     width: 100%;
@@ -17,6 +22,7 @@ const StyledPaginationWrapper = styled('div')`
     justify-content: center;
     top: ${({ theme }) => theme.size.huge}px;
     gap: ${({ theme }) => theme.size.medium}px;
+    ${({ isMobile }) => isMobile && `flex-direction: column;`}
 `
 
 const StyledPaginationItem = styled(Card)`
@@ -33,8 +39,9 @@ const StyledPaginationItem = styled(Card)`
 const CustomSwiperPagination: React.FC<CustomSwiperPaginationProps> = ({
     controller,
 }) => {
+    const isDeviceMobile = isMobile()
     return (
-        <StyledPaginationWrapper>
+        <StyledPaginationWrapper isMobile={isDeviceMobile}>
             {pageConfig.map((config, index) => (
                 <StyledPaginationItem
                     onClick={() => controller.slideTo(index)}
