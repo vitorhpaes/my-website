@@ -12,11 +12,11 @@ interface StyledArrowDownWapperProps {
 const StyledArrowDownWapper = styled(motion.div)<StyledArrowDownWapperProps>`
     position: absolute;
     bottom: ${({ theme, isMobile }) =>
-        isMobile ? theme.size.large : theme.size.huge}px;
+        isMobile ? theme.size.huge : theme.size.huge}px;
 `
 
 const AnimatedArrowDown: React.FC = () => {
-    const isDeviceMobile = isMobile()
+    const isDeviceMobile = isMobile
 
     const moveTop = -50
 

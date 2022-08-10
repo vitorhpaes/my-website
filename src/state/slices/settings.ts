@@ -5,13 +5,11 @@ import type { RootState } from '../store'
 interface SettingsState {
     language: 'ptBR' | 'enGB'
     themeMode: 'light' | 'dark'
-    showMenuButton: boolean
 }
 
 const initialState: SettingsState = {
     language: 'enGB',
     themeMode: 'dark',
-    showMenuButton: false,
 }
 
 export const settingsSlice = createSlice({
@@ -19,9 +17,6 @@ export const settingsSlice = createSlice({
     // `createSlice` will infer the state type from the `initialState` argument
     initialState,
     reducers: {
-        setShowMenuButton: (state, action: PayloadAction<boolean>) => {
-            state.showMenuButton = !!action.payload
-        },
         setSystemLanguage: (state, action: PayloadAction<'ptBR' | 'enGB'>) => {
             if (!action.payload) return
             state.language = action.payload
@@ -36,8 +31,7 @@ export const settingsSlice = createSlice({
     },
 })
 
-export const { setSystemLanguage, setSystemThemeMode, setShowMenuButton } =
-    settingsSlice.actions
+export const { setSystemLanguage, setSystemThemeMode } = settingsSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => state.settings

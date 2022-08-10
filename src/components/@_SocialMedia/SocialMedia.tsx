@@ -32,9 +32,9 @@ const SocialMedia: React.FC<SocialMediaProps> = ({
     github,
 }) => {
     const theme = useTheme()
-    const isDeviceMobile = isMobile()
+
     return (
-        <StyledSocialMedia px="small" py="small" isMobile={isDeviceMobile}>
+        <StyledSocialMedia px="small" py="small" isMobile={isMobile}>
             <Link href={twitter} target="_blank">
                 <FiTwitter
                     size={theme.size.large}

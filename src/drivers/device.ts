@@ -24,7 +24,7 @@ const checkByScreenWidth = () => {
 // the commented ways to check will be valid if the site have a different tablet layout
 // const isTablet = checkByUserAgent() && !checkByPointer() && !checkByScreenWidth()
 
-export const isMobile = () => {
+export const checkIsMobile = () => {
     if (checkByScreenWidth()) return true
 
     // if (checkByUserAgent()) return true //check by user agent return true for tablets too
@@ -32,4 +32,5 @@ export const isMobile = () => {
     return false
 }
 
-export const isDesktop = () => !isMobile()
+export const isMobile = checkIsMobile()
+export const isDesktop = !checkIsMobile()

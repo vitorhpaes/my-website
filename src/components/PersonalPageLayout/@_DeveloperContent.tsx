@@ -34,7 +34,7 @@ const StyledCard = styled(Card)<StyledContentProps>`
 `
 
 const DeveloperContent: React.FC = () => {
-    const isDeviceDesktop = isDesktop()
+    const isDeviceDesktop = isDesktop
     return (
         <StyledCard
             top={isDeviceDesktop ? 'large' : null}

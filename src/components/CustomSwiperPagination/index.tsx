@@ -1,15 +1,12 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useState } from 'react'
 import { styled } from '@mui/material'
 import SwiperClass from 'swiper'
 import pageConfig from './data'
 import { isMobile } from '@app/drivers/device'
-import { useAppDispatch, useAppSelector } from '@app/state/hooks'
 
 import { TiThMenuOutline } from 'react-icons/ti'
-import { setShowMenuButton } from '@app/state/slices/settings'
 import CustomSwiperPaginationItem from './CustomSwiperPaginationItem'
-
-import { Animated } from '@ds'
+import { motion, AnimatePresence } from 'framer-motion'
 
 interface CustomSwiperPaginationProps {
     controller: SwiperClass
@@ -34,50 +31,46 @@ const StyledPaginationWrapper = styled('div')<StyledPaginaationWrapperProps>`
 const CustomSwiperPagination: React.FC<CustomSwiperPaginationProps> = ({
     controller,
 }) => {
-    const isDeviceMobile = isMobile()
-    const { showMenuButton } = useAppSelector((app) => app.settings)
-    const dispatch = useAppDispatch()
-
-    const isMenuOpen = useMemo(() => !showMenuButton, [showMenuButton])
-
-    const toggleMenu = useCallback(() => {
-        dispatch(setShowMenuButton(!showMenuButton))
-    }, [showMenuButton])
+    const showToggler = isMobile
+    const [isOpen, setIsOpen] = useState(false)
 
     const slideToIndex = useCallback(
         (index: number) => {
-            toggleMenu()
+            setIsOpen(false)
             controller.slideTo(index)
         },
-        [controller, toggleMenu]
+        [controller, isOpen]
     )
 
     return (
-        <StyledPaginationWrapper isMobile={isDeviceMobile}>
-            {isDeviceMobile && (
+        <StyledPaginationWrapper isMobile={isMobile}>
+            {showToggler && (
                 <CustomSwiperPaginationItem
                     icon={TiThMenuOutline}
-                    isVisible={isDeviceMobile || showMenuButton}
-                    animated={false}
-                    onClick={toggleMenu}
+                    onClick={() => setIsOpen(!isOpen)}
                 />
             )}
-            {pageConfig.map((config, index) => (
-                <Animated
-                    type="showFromSide"
-                    from="top"
-                    duration={(index + 1) * 0.25}
-                    key={index}
-                >
-                    <CustomSwiperPaginationItem
-                        name={config.name}
-                        icon={config.Icon}
-                        isVisible={isMenuOpen}
-                        onClick={() => slideToIndex(index)}
-                        animated
-                    />
-                </Animated>
-            ))}
+            <AnimatePresence>
+                {isOpen &&
+                    pageConfig.map((config, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ y: screen.height * -1.2, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: screen.height * -1.2, opacity: 0 }}
+                            transition={{
+                                duration: (index + 1) * 0.25,
+                                ease: 'easeOut',
+                            }}
+                        >
+                            <CustomSwiperPaginationItem
+                                name={config.name}
+                                icon={config.Icon}
+                                onClick={() => slideToIndex(index)}
+                            />
+                        </motion.div>
+                    ))}
+            </AnimatePresence>
         </StyledPaginationWrapper>
     )
 }

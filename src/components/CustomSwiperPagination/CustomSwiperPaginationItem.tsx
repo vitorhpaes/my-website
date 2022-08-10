@@ -3,13 +3,7 @@ import { Card } from '@ds'
 import { styled, Typography } from '@mui/material'
 import { IconType } from 'react-icons'
 
-interface StyledPaginationItemProps {
-    isVisible: boolean
-    animated?: boolean
-}
-
-const StyledPaginationItem = styled(Card)<StyledPaginationItemProps>`
-    ${({ isVisible }) => !isVisible && `visibility: hidden`};
+const StyledPaginationItem = styled(Card)`
     padding: ${({ theme }) => `${theme.size.nano}px ${theme.size.medium}px`};
     cursor: pointer;
 
@@ -21,7 +15,7 @@ const StyledPaginationItem = styled(Card)<StyledPaginationItemProps>`
     }
 `
 
-interface CustomSwiperPaginationItemProps extends StyledPaginationItemProps {
+interface CustomSwiperPaginationItemProps {
     name?: string
     icon: IconType
     onClick: () => void

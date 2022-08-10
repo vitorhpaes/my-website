@@ -8,6 +8,7 @@ type AnimationComponentProps = ShowFromSideProps
 
 interface AnimatedComponentProps extends AnimationComponentProps {
     type: AnimationTypes
+    children: React.ReactNode
 }
 
 const Animated: React.FC<AnimatedComponentProps> = ({ type, ...props }) => {
