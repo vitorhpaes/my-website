@@ -8,7 +8,7 @@ import 'swiper/css/pagination'
 
 import FirstSection from '@pages/PersonalPage/FirstSection'
 
-import CustomSwiperPagination from '@components/CustomSwiperPagination/CustomSwiperPagination'
+import CustomSwiperPagination from '@app/components/CustomSwiperPagination'
 
 const StyledSwiper = styled(Swiper)`
     width: 100%;

@@ -7,6 +7,7 @@ import { Spacing, Card } from '@ds'
 
 import { useLocale } from '@app/config/context/LocaleContextProvider'
 import { useAppSelector } from '@app/state/hooks'
+import AnimatedArrowDown from '@app/components/AnimatedArrowDown/AnimatedArrowDown'
 
 interface StyledBackgroundProps {
     themeMode?: 'dark' | 'light'
@@ -62,6 +63,8 @@ const FirstSection: React.FC = () => {
                     </Spacing>
                 </Card>
             </Spacing>
+
+            <AnimatedArrowDown />
         </StyledBackground>
     )
 }

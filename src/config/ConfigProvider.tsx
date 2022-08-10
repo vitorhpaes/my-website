@@ -8,11 +8,11 @@ const ConfigProvider: React.FC<{ children: React.ReactNode }> = ({
     children,
 }) => {
     return (
-        <TranslationsIntlContainer>
-            <LocaleContextProvider>
-                <SystemThemeWrapper>{children}</SystemThemeWrapper>
-            </LocaleContextProvider>
-        </TranslationsIntlContainer>
+        <SystemThemeWrapper>
+            <TranslationsIntlContainer>
+                <LocaleContextProvider>{children}</LocaleContextProvider>
+            </TranslationsIntlContainer>
+        </SystemThemeWrapper>
     )
 }
 

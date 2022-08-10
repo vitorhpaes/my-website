@@ -86,7 +86,7 @@ const TechCard: React.FC = () => {
 }
 
 const TechCardWrapper: React.FC = () => {
-    if (isMobile()) return <></>
+    if (isMobile) return <></>
     return <TechCard />
 }
 
