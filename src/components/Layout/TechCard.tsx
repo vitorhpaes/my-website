@@ -18,6 +18,7 @@ import {
 } from 'react-icons/si'
 import { useLocale } from '@app/config/context/LocaleContextProvider'
 import { borderRadius } from 'polished'
+import { isMobile } from '@app/drivers/device'
 
 const StyledTechCard = styled(Card)`
     z-index: 9999;
@@ -84,4 +85,9 @@ const TechCard: React.FC = () => {
     )
 }
 
-export default TechCard
+const TechCardWrapper: React.FC = () => {
+    if (isMobile()) return <></>
+    return <TechCard />
+}
+
+export default TechCardWrapper
