@@ -4,7 +4,7 @@ import SwiperClass from 'swiper'
 import pageConfig from './data'
 import { isMobile } from '@app/drivers/device'
 
-import { TiThMenuOutline } from 'react-icons/ti'
+import { MdMenu, MdMenuOpen } from 'react-icons/md'
 import CustomSwiperPaginationItem from './CustomSwiperPaginationItem'
 import { AnimatePresence } from 'framer-motion'
 import { Animated } from '@ds'
@@ -47,7 +47,7 @@ const CustomSwiperPagination: React.FC<CustomSwiperPaginationProps> = ({
         <StyledPaginationWrapper isMobile={isMobile}>
             {showToggler && (
                 <CustomSwiperPaginationItem
-                    icon={TiThMenuOutline}
+                    icon={isOpen ? MdMenuOpen : MdMenu}
                     onClick={() => setIsOpen(!isOpen)}
                 />
             )}
