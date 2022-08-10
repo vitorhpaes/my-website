@@ -16,7 +16,6 @@ const ShowFromSide: React.FC<ShowFromSideProps> = ({
     exit = true,
 
     children,
-    ...motionDivProps
 }) => {
     const line = ['left', 'right'].includes(from) ? 'x' : 'y'
     const lineWidth = line === 'x' ? screen.width : screen.height
@@ -25,33 +24,16 @@ const ShowFromSide: React.FC<ShowFromSideProps> = ({
 
     return (
         <motion.div
-            {...motionDivProps}
-            initial={'hidden'}
-            animate={'visible'}
-            variants={{
-                hidden: {
-                    opacity: 0,
-                    [line]: offScreen,
-                },
-                visible: {
-                    opacity: 1,
-                    [line]: keepObjectIndex,
-                },
-                exit: exit && {
-                    opacity: 0,
-                    [line]: offScreen,
-                },
-            }}
-            // animate={{ [line]: keepObjectIndex, visibility: 1 }}
-            // initial={{ [line]: initialStateInLine, visibility: 0 }}
+            initial={{ [line]: offScreen, opacity: 0 }}
+            animate={{ [line]: keepObjectIndex, opacity: 1 }}
+            exit={exit && { [line]: offScreen, opacity: 0 }}
             transition={{
-                ease,
-                duration,
+                duration: duration,
+                ease: ease,
             }}
         >
             {children}
         </motion.div>
     )
 }
-
 export default ShowFromSide
