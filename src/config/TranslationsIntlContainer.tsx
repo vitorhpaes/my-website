@@ -14,8 +14,6 @@ const TranslationsIntlContainer: React.FC<TranslationsIntlContainerProps> = ({
 
     const { language, messages } = getIntlConfiguration(currentLanguage)
 
-    console.log({ language, messages })
-
     return (
         <IntlProvider locale={language} messages={messages}>
             {children}

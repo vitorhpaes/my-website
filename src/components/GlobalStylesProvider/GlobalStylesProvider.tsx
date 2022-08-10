@@ -11,8 +11,8 @@ const GlobalStylesMUI = () => {
                     boxSizing: 'border-box',
                     color: theme.palette.text.primary,
                     fontFamily: 'Comfortaa, cursive',
-                    '-webkit-font-smoothing': 'antialiased',
-                    '-moz-osx-font-smoothing': 'grayscale',
+                    WebkitFontSmoothing: 'antialised',
+                    MozOsxFontSmoothing: 'grayscale',
                     transition: '.4s',
                 },
                 html: {

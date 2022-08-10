@@ -1,6 +1,6 @@
 import React from 'react'
 import darkBackground from '@app/assets/images/background_dark.jpg'
-import lightBackground from '@app/assets/images/old/bg07.jpg'
+import lightBackground from '@app/assets/images/background_light.jpg'
 
 import { styled, Typography } from '@mui/material'
 import { Spacing, Card } from '@ds'
@@ -10,7 +10,7 @@ import { useAppSelector } from '@app/state/hooks'
 import AnimatedArrowDown from '@app/components/AnimatedArrowDown/AnimatedArrowDown'
 
 interface StyledBackgroundProps {
-    themeMode?: 'dark' | 'light'
+    thememode?: 'dark' | 'light'
 }
 
 const themeModeBackground = {
@@ -23,7 +23,7 @@ const StyledBackground = styled('div')<StyledBackgroundProps>`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-image: url(${({ themeMode }) => themeModeBackground[themeMode]});
+    background-image: url(${({ thememode }) => themeModeBackground[thememode]});
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -38,7 +38,7 @@ const FirstSection: React.FC = () => {
     const { themeMode } = useAppSelector((app) => app.settings)
 
     return (
-        <StyledBackground themeMode={themeMode}>
+        <StyledBackground thememode={themeMode}>
             <Card>
                 <Spacing px="medium" py="small">
                     <Typography variant="h3">

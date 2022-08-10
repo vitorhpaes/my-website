@@ -13,11 +13,7 @@ interface CustomSwiperPaginationProps {
     controller: SwiperClass
 }
 
-interface StyledPaginaationWrapperProps {
-    isMobile: boolean
-}
-
-const StyledPaginationWrapper = styled('div')<StyledPaginaationWrapperProps>`
+const StyledPaginationWrapper = styled('div')`
     position: fixed;
     z-index: 9999;
     width: 100%;
@@ -26,7 +22,7 @@ const StyledPaginationWrapper = styled('div')<StyledPaginaationWrapperProps>`
     justify-content: center;
     top: ${({ theme }) => theme.size.huge}px;
     gap: ${({ theme }) => theme.size.medium}px;
-    ${({ isMobile }) => isMobile && `flex-direction: column;`}
+    ${isMobile && `flex-direction: column;`}
 `
 
 const CustomSwiperPagination: React.FC<CustomSwiperPaginationProps> = ({
@@ -44,7 +40,7 @@ const CustomSwiperPagination: React.FC<CustomSwiperPaginationProps> = ({
     )
 
     return (
-        <StyledPaginationWrapper isMobile={isMobile}>
+        <StyledPaginationWrapper>
             {showToggler && (
                 <CustomSwiperPaginationItem
                     icon={isOpen ? MdMenuOpen : MdMenu}
