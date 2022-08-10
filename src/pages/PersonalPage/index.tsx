@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
-import HomePage from '@app/pages/HomePage'
-import SwiperClass, { Controller, Mousewheel, Pagination } from 'swiper'
 import { styled } from '@mui/material'
-import { Swiper, SwiperSlide } from 'swiper/react'
 
+import SwiperClass, { Controller, Mousewheel, Pagination } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
-import CustomSwiperPagination from './CustomSwiperPagination/CustomSwiperPagination'
+
+import FirstSection from '@pages/PersonalPage/FirstSection'
+
+import CustomSwiperPagination from '@components/CustomSwiperPagination/CustomSwiperPagination'
 
 const StyledSwiper = styled(Swiper)`
     width: 100%;
     height: 100%;
 `
 
-const PageControl: React.FC = () => {
+const PersonalPage: React.FC = () => {
     const [controller, setController] = useState<SwiperClass>(null)
 
     return (
@@ -33,7 +35,7 @@ const PageControl: React.FC = () => {
                 onSwiper={setController}
             >
                 <SwiperSlide>
-                    <HomePage />
+                    <FirstSection />
                 </SwiperSlide>
                 <SwiperSlide>Page</SwiperSlide>
             </StyledSwiper>
@@ -41,4 +43,4 @@ const PageControl: React.FC = () => {
     )
 }
 
-export default PageControl
+export default PersonalPage

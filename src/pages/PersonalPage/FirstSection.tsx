@@ -32,7 +32,7 @@ const StyledBackground = styled('div')<StyledBackgroundProps>`
     left: 0;
 `
 
-const HomePage: React.FC = () => {
+const FirstSection: React.FC = () => {
     const { translate } = useLocale()
     const { themeMode } = useAppSelector((app) => app.settings)
 
@@ -66,4 +66,4 @@ const HomePage: React.FC = () => {
     )
 }
 
-export default HomePage
+export default FirstSection

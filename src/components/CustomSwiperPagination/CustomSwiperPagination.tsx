@@ -8,7 +8,8 @@ import { useAppDispatch, useAppSelector } from '@app/state/hooks'
 import { TiThMenuOutline } from 'react-icons/ti'
 import { setShowMenuButton } from '@app/state/slices/settings'
 import CustomSwiperPaginationItem from './CustomSwiperPaginationItem'
-import Animated from './../../DesignSystem/Animated/Animated'
+
+import { Animated } from '@ds'
 
 interface CustomSwiperPaginationProps {
     controller: SwiperClass
