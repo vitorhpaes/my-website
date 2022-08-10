@@ -2,7 +2,7 @@ import React from 'react'
 import { isDesktop } from '@app/drivers/device'
 import { SizeKey, styled } from '@mui/material'
 import { borderRadius } from 'polished'
-import SocialMedia from './../SocialMedia/SocialMedia'
+import SocialMedia from '../@_SocialMedia/SocialMedia'
 import { Card } from '@ds'
 
 interface StyledContentProps {

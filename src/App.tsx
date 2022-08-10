@@ -1,5 +1,5 @@
 import React from 'react'
-import GlobalStylesMUI from './components/Layout/GlobalStyles'
+import GlobalStylesMUI from './components/GlobalStylesProvider/GlobalStylesProvider'
 
 import { Provider as StoreProvider } from 'react-redux'
 import { store } from './state/store'

@@ -4,7 +4,7 @@ import Content from './Content'
 import SettingsHeader from './SettingsHeader'
 import TechCard from './TechCard'
 
-const Layout: React.FC = () => {
+const PersonalPageLayout: React.FC = () => {
     return (
         <>
             <SettingsHeader />
@@ -16,4 +16,4 @@ const Layout: React.FC = () => {
     )
 }
 
-export default Layout
+export default PersonalPageLayout
