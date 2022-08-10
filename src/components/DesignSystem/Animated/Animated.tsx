@@ -1,18 +1,22 @@
 import React from 'react'
+import PulseInline, { PulseInlineProps } from './PulseInline'
 import ShowFromSide, { ShowFromSideProps } from './ShowFromSide'
 
-// import { Container } from './styles
+// type AnimationTypes = 'showFromSide' | 'pulseInline'
 
-type AnimationTypes = 'showFromSide' /* | 'otherAnimation' */
-type AnimationComponentProps = ShowFromSideProps
-
-interface AnimatedComponentProps extends AnimationComponentProps {
-    type: AnimationTypes
+interface Children {
     children: React.ReactNode
 }
 
-const Animated: React.FC<AnimatedComponentProps> = ({ type, ...props }) => {
-    if (type === 'showFromSide') return <ShowFromSide {...props} />
+type AnimatedComponentPropsWithAnimationConfig =
+    | (Children & Pick<ShowFromSideProps, keyof ShowFromSideProps>)
+    | (Children & Pick<PulseInlineProps, keyof PulseInlineProps>)
+
+const Animated: React.FC<AnimatedComponentPropsWithAnimationConfig> = (
+    config
+) => {
+    if ('from' in config) return <ShowFromSide {...config} />
+    if ('pulseRange' in config) return <PulseInline {...config} />
 }
 
 export default Animated

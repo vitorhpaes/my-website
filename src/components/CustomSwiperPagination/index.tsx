@@ -56,7 +56,6 @@ const CustomSwiperPagination: React.FC<CustomSwiperPaginationProps> = ({
                     pageConfig.map((config, index) => (
                         <Animated
                             key={index}
-                            type="showFromSide"
                             duration={(index + 1) * 0.25}
                             from="top"
                         >
