@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '@app/state/hooks'
 import { TiThMenuOutline } from 'react-icons/ti'
 import { setShowMenuButton } from '@app/state/slices/settings'
 import CustomSwiperPaginationItem from './CustomSwiperPaginationItem'
+import Animated from './../../DesignSystem/Animated/Animated'
 
 interface CustomSwiperPaginationProps {
     controller: SwiperClass
@@ -52,21 +53,29 @@ const CustomSwiperPagination: React.FC<CustomSwiperPaginationProps> = ({
 
     return (
         <StyledPaginationWrapper isMobile={isDeviceMobile}>
-            <CustomSwiperPaginationItem
-                icon={TiThMenuOutline}
-                isVisible={isDeviceMobile || showMenuButton}
-                animated={false}
-                onClick={toggleMenu}
-            />
-            {pageConfig.map((config, index) => (
+            {isDeviceMobile && (
                 <CustomSwiperPaginationItem
-                    key={index}
-                    name={config.name}
-                    icon={config.Icon}
-                    isVisible={isMenuOpen}
-                    onClick={() => slideToIndex(index)}
-                    animated
+                    icon={TiThMenuOutline}
+                    isVisible={isDeviceMobile || showMenuButton}
+                    animated={false}
+                    onClick={toggleMenu}
                 />
+            )}
+            {pageConfig.map((config, index) => (
+                <Animated
+                    type="showFromSide"
+                    from="top"
+                    duration={(index + 1) * 0.25}
+                    key={index}
+                >
+                    <CustomSwiperPaginationItem
+                        name={config.name}
+                        icon={config.Icon}
+                        isVisible={isMenuOpen}
+                        onClick={() => slideToIndex(index)}
+                        animated
+                    />
+                </Animated>
             ))}
         </StyledPaginationWrapper>
     )

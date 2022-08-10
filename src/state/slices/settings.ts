@@ -11,7 +11,7 @@ interface SettingsState {
 const initialState: SettingsState = {
     language: 'enGB',
     themeMode: 'dark',
-    showMenuButton: true,
+    showMenuButton: false,
 }
 
 export const settingsSlice = createSlice({

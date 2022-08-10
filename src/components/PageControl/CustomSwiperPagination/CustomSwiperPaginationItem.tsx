@@ -11,6 +11,7 @@ interface StyledPaginationItemProps {
 const StyledPaginationItem = styled(Card)<StyledPaginationItemProps>`
     ${({ isVisible }) => !isVisible && `visibility: hidden`};
     padding: ${({ theme }) => `${theme.size.nano}px ${theme.size.medium}px`};
+    cursor: pointer;
 
     > * {
         display: flex;
