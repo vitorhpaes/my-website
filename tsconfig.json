@@ -6,6 +6,7 @@
         "module": "esnext",
         "moduleResolution": "node",
         "resolveJsonModule": true,
+        "sourceMap": true,
         "pretty": true,
         "skipLibCheck": true,
         "removeComments": true,
@@ -35,6 +36,11 @@
             "node",
             "jest",
         ],
+    },
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
     },
     "include": ["**/*", "src/@types"],
     "exclude": ["node_modules", "dist"]
