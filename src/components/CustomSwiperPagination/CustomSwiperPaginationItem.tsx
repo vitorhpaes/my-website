@@ -1,7 +1,6 @@
 import React from 'react'
 import { Card } from '@ds'
 import { styled, Typography } from '@mui/material'
-import { IconType } from 'react-icons'
 
 const StyledPaginationItem = styled(Card)`
     padding: ${({ theme }) => `${theme.size.nano}px ${theme.size.medium}px`};
@@ -17,7 +16,7 @@ const StyledPaginationItem = styled(Card)`
 
 interface CustomSwiperPaginationItemProps {
     name?: string
-    icon: IconType
+    icon: React.ReactNode
     onClick: () => void
 }
 
@@ -30,7 +29,7 @@ const CustomSwiperPaginationItem: React.FC<CustomSwiperPaginationItemProps> = ({
     return (
         <StyledPaginationItem {...styledProps} onClick={onClick}>
             <Typography variant="subtitle2">
-                {<Icon size={20} />}
+                {Icon}
                 {!!name && name}
             </Typography>
         </StyledPaginationItem>

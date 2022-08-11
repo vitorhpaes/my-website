@@ -29,7 +29,7 @@ const CustomSwiperPagination: React.FC<CustomSwiperPaginationProps> = ({
     controller,
 }) => {
     const showToggler = isMobile
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(!isMobile)
 
     const slideToIndex = useCallback(
         (index: number) => {
@@ -43,14 +43,16 @@ const CustomSwiperPagination: React.FC<CustomSwiperPaginationProps> = ({
         <StyledPaginationWrapper>
             {showToggler && (
                 <CustomSwiperPaginationItem
-                    icon={isOpen ? MdMenuOpen : MdMenu}
+                    icon={
+                        isOpen ? <MdMenuOpen size={20} /> : <MdMenu size={20} />
+                    }
                     onClick={() => setIsOpen(!isOpen)}
                 />
             )}
             <AnimatePresence>
                 {isOpen &&
                     pageConfig.map((config, index) => (
-                        <Animated
+                        <Animated.ShowFromSide
                             key={index}
                             duration={(index + 1) * 0.25}
                             from="top"
@@ -60,7 +62,7 @@ const CustomSwiperPagination: React.FC<CustomSwiperPaginationProps> = ({
                                 icon={config.Icon}
                                 onClick={() => slideToIndex(index)}
                             />
-                        </Animated>
+                        </Animated.ShowFromSide>
                     ))}
             </AnimatePresence>
         </StyledPaginationWrapper>
