@@ -16,9 +16,9 @@ const AnimatedArrowDown: React.FC = () => {
 
     return (
         <StyledArrowDownWapper>
-            <Animated pulseRange={moveTop} line="y" duration={0.5}>
+            <Animated.PulseInline pulseRange={moveTop} line="y" duration={0.5}>
                 <FiArrowDown size={40} />
-            </Animated>
+            </Animated.PulseInline>
         </StyledArrowDownWapper>
     )
 }

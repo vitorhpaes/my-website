@@ -4,7 +4,7 @@ export interface ShowFromSideProps {
     from?: 'left' | 'rigth' | 'top' | 'bottom'
     ease?: string
     duration?: number
-    exit?: boolean
+    exit?: boolean | 'reverse'
 
     children: React.ReactNode
 }
@@ -19,14 +19,17 @@ const ShowFromSide: React.FC<ShowFromSideProps> = ({
 }) => {
     const line = ['left', 'right'].includes(from) ? 'x' : 'y'
     const lineWidth = line === 'x' ? screen.width : screen.height
-    const offScreen = lineWidth * -1
+    const multiplicatorBasedOnLine = ['bottom', 'left'].includes(from) ? 1 : -1
+    const offScreen = lineWidth * multiplicatorBasedOnLine
     const keepObjectIndex = 0
+
+    const exitTargetIndex = exit === 'reverse' ? offScreen * -1 : offScreen
 
     return (
         <motion.div
             initial={{ [line]: offScreen, opacity: 0 }}
             animate={{ [line]: keepObjectIndex, opacity: 1 }}
-            exit={exit && { [line]: offScreen, opacity: 0 }}
+            exit={exit && { [line]: exitTargetIndex, opacity: 0 }}
             transition={{
                 duration: duration,
                 ease: ease,

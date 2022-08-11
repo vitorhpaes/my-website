@@ -6,13 +6,13 @@ import { motion } from 'framer-motion'
 export interface PulseInlineProps {
     line: 'x' | 'y'
     pulseRange: number
-    transition?: number
+    duration?: number
     children: React.ReactNode
 }
 
 const PulseInline: React.FC<PulseInlineProps> = ({
     children,
-    transition = 0.25,
+    duration = 0.25,
     line,
     pulseRange,
 }) => {
@@ -23,7 +23,7 @@ const PulseInline: React.FC<PulseInlineProps> = ({
             }}
             transition={{
                 repeat: Infinity,
-                duration: transition,
+                duration,
             }}
         >
             {children}
