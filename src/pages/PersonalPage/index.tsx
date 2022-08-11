@@ -6,9 +6,10 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
-import FirstSection from '@pages/PersonalPage/FirstSection'
-
+import HomeSection from '@app/pages/PersonalPage/HomeSection'
 import CustomSwiperPagination from '@app/components/CustomSwiperPagination'
+import SocialSection from './SocialSection'
+import socialContentMocked from './mock/socialContent'
 
 const StyledSwiper = styled(Swiper)`
     width: 100%;
@@ -17,6 +18,21 @@ const StyledSwiper = styled(Swiper)`
 
 const PersonalPage: React.FC = () => {
     const [controller, setController] = useState<SwiperClass>(null)
+    const [activeSlide, setActiveSlide] = useState<number>(0)
+    const [alreadyActivedSlides, setAlreadyActivedSlides] = useState<number[]>(
+        []
+    )
+
+    const afterChangeSlide = (swiper: SwiperClass) => {
+        const currentSlideIndex = swiper.activeIndex
+        setActiveSlide(swiper.activeIndex)
+        if (!alreadyActivedSlides.includes(currentSlideIndex)) {
+            setAlreadyActivedSlides([
+                ...alreadyActivedSlides,
+                currentSlideIndex,
+            ])
+        }
+    }
 
     return (
         <>
@@ -32,12 +48,20 @@ const PersonalPage: React.FC = () => {
                     clickable: true,
                 }}
                 controller={{ control: controller }}
+                onSlideChange={afterChangeSlide}
                 onSwiper={setController}
             >
                 <SwiperSlide>
-                    <FirstSection />
+                    <HomeSection />
                 </SwiperSlide>
-                <SwiperSlide>Page</SwiperSlide>
+                <SwiperSlide>
+                    <SocialSection
+                        alreadyActived={alreadyActivedSlides.includes(1)}
+                        revertAnimation={activeSlide < 1}
+                        socialContent={socialContentMocked}
+                    />
+                </SwiperSlide>
+                <SwiperSlide>OTHER SECTION</SwiperSlide>
             </StyledSwiper>
         </>
     )

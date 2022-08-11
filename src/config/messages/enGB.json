@@ -3,5 +3,9 @@
     "fullstack": "I'm a full-stack developer",
     "frontend": "Front-end Semi-Senior",
     "backend": "Back-end Mid",
-    "madeWith": "This website was made with"
+    "madeWith": "This website was made with",
+    "toConnect": "Connect",
+    "messageMe": "Message me",
+    "follow": "Follow",
+    "mailMe": "Mail me"
 }

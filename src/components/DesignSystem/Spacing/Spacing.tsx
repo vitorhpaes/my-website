@@ -93,7 +93,7 @@ interface SpacingProps extends StyledSpacingProps {
 
 const Spacing: React.FC<SpacingProps> = ({
     children,
-    eachChildren,
+    eachChildren = false,
     wrapper = true,
     ...props
 }) => {
