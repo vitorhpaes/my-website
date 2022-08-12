@@ -8,6 +8,7 @@ import { MdMenu, MdMenuOpen } from 'react-icons/md'
 import CustomSwiperPaginationItem from './CustomSwiperPaginationItem'
 import { AnimatePresence } from 'framer-motion'
 import { Animated } from '@ds'
+import { useLocale } from '@app/config/context/LocaleContextProvider'
 
 interface CustomSwiperPaginationProps {
     controller: SwiperClass
@@ -29,15 +30,18 @@ const CustomSwiperPagination: React.FC<CustomSwiperPaginationProps> = ({
     controller,
 }) => {
     const showToggler = isMobile
+    const { translate } = useLocale()
     const [isOpen, setIsOpen] = useState(!isMobile)
 
     const slideToIndex = useCallback(
         (index: number) => {
-            setIsOpen(false)
+            if (isMobile) setIsOpen(false)
             controller.slideTo(index)
         },
         [controller, isOpen]
     )
+
+    console.log({ controller })
 
     return (
         <StyledPaginationWrapper>
@@ -58,7 +62,8 @@ const CustomSwiperPagination: React.FC<CustomSwiperPaginationProps> = ({
                             from="top"
                         >
                             <CustomSwiperPaginationItem
-                                name={config.name}
+                                isActive={controller?.activeIndex === index}
+                                name={translate(config.translationKey)}
                                 icon={config.Icon}
                                 onClick={() => slideToIndex(index)}
                             />

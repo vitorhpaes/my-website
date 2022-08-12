@@ -3,7 +3,7 @@ import { FiHome, FiUser, FiPackage } from 'react-icons/fi'
 import { TiSocialAtCircular } from 'react-icons/ti'
 
 interface PageConfigProps {
-    name: string
+    translationKey: string
     Icon: React.ReactNode
 }
 
@@ -11,20 +11,20 @@ type PageConfig = PageConfigProps[]
 
 const pageConfig: PageConfig = [
     {
-        name: 'Home',
+        translationKey: 'home',
         Icon: <FiHome size={20} />,
     },
     {
-        name: 'Social',
-        Icon: <TiSocialAtCircular size={25} />,
+        translationKey: 'social',
+        Icon: <TiSocialAtCircular size={20} />,
     },
     {
-        name: 'Portfolio',
-        Icon: <FiPackage size={30} />,
+        translationKey: 'portfolio',
+        Icon: <FiPackage size={20} />,
     },
     {
-        name: 'About me',
-        Icon: <FiUser size={30} />,
+        translationKey: 'aboutMe',
+        Icon: <FiUser size={20} />,
     },
 ]
 

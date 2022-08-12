@@ -7,5 +7,9 @@
     "toConnect": "Connect",
     "messageMe": "Message me",
     "follow": "Follow",
-    "mailMe": "Mail me"
+    "mailMe": "Mail me",
+    "home": "Home",
+    "social": "Social",
+    "portfolio": "Portfolio",
+    "aboutMe": "About me"
 }
