@@ -41,8 +41,6 @@ const CustomSwiperPagination: React.FC<CustomSwiperPaginationProps> = ({
         [controller, isOpen]
     )
 
-    console.log({ controller })
-
     return (
         <StyledPaginationWrapper>
             {showToggler && (

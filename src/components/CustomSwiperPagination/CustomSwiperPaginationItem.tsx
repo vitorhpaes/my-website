@@ -9,7 +9,8 @@ interface StyledPaginationItemProps {
 const StyledPaginationItem = styled(Card)<StyledPaginationItemProps>`
     padding: ${({ theme }) => `${theme.size.nano}px ${theme.size.medium}px`};
     box-shadow: ${({ theme, isActive }) =>
-        isActive ? `box-shadow: ${theme.shadows[12]}` : ''};
+        isActive ? `box-shadow: ${theme.shadows[19]}` : ''};
+
     cursor: pointer;
 
     > * {

@@ -12,7 +12,7 @@ const socialContentMocked: SocialMediaProps[] = [
     {
         network: {
             name: 'linkedin',
-            actionMessageKey: 'connect',
+            actionMessageKey: 'toConnect',
         },
         username: 'Mid front-end developer',
     },

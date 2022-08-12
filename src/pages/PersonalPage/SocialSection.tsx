@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Container, styled, Typography } from '@mui/material'
+import { Avatar, Button, Container, styled, Typography } from '@mui/material'
 
 import { SocialCard, Spacing } from '@ds'
 import { SocialMediaProps } from './mock/socialContent'
@@ -9,6 +9,7 @@ import { useAppSelector } from '@app/state/hooks'
 import darkBackground from '@app/assets/images/social_dark.jpg'
 import lightBackground from '@app/assets/images/social_light.jpg'
 import { useLocale } from '@app/config/context/LocaleContextProvider'
+import { isMobile } from '@app/drivers/device'
 
 const themeModeBackground = {
     dark: darkBackground,
@@ -34,7 +35,8 @@ const SocialSectionFlexBox = styled(Spacing)`
 `
 
 const StyledContainer = styled(Container)`
-    margin-top: ${({ theme }) => theme.size.largeXX}px;
+    margin-top: ${({ theme }) =>
+        isMobile ? theme.size.large : theme.size.largeX}px;
     min-height: calc(100% - ${({ theme }) => theme.size.hugeXXXX}px);
     max-height: calc(100% - ${({ theme }) => theme.size.largeXX}px);
 `
@@ -57,6 +59,13 @@ const SocialSection: React.FC<SocialSectionProps> = ({
         <SectionBackground backgroundImage={themeModeBackground[themeMode]}>
             <StyledContainer>
                 <SocialSectionFlexBox px="medium">
+                    <Spacing mb="small">
+                        <Avatar
+                            alt="Profile Picture"
+                            sx={{ width: 75, height: 75 }}
+                            src="https://pps.whatsapp.net/v/t61.24694-24/296470152_813242303022205_4802499503124202478_n.jpg?ccb=11-4&oh=01_AVwPz-AJhu2tk-6lpbFAXwM_Wl76knLlPJQnS74vYUSm7g&oe=630625A5"
+                        />
+                    </Spacing>
                     {alreadyActived &&
                         socialContent.map(({ network, username }, index) => (
                             <SocialCard
