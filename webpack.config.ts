@@ -2,6 +2,7 @@
 import { Configuration } from 'webpack'
 import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 
 import 'webpack-dev-server'
 
@@ -10,6 +11,7 @@ const devConfig: Pick<Configuration, 'devServer'> = {
         allowedHosts: 'all',
         compress: true,
         port: 5000,
+        hot: true,
         historyApiFallback: true,
         static: {
             directory: path.join(__dirname, 'static'),
@@ -58,7 +60,16 @@ const optimizationConfig: Pick<Configuration, 'optimization'> = {
     },
 }
 
-module.exports = function build() {
+interface WebpackArgumentsProps {
+    mode: 'development' | 'production'
+    hot: boolean
+    env: {
+        WEBPACK_SERVE: boolean
+    }
+}
+
+module.exports = function build(_: any, args: WebpackArgumentsProps) {
+    const isDevelopment = args.mode === 'development'
     const config: Configuration = {
         ...devConfig,
         ...optimizationConfig,
@@ -75,6 +86,11 @@ module.exports = function build() {
                     exclude: /node_modules/,
                     use: {
                         loader: 'babel-loader',
+                        options: {
+                            plugins: [
+                                isDevelopment && require('react-refresh/babel'),
+                            ].filter(Boolean),
+                        },
                     },
                 },
                 {
@@ -120,7 +136,8 @@ module.exports = function build() {
                 template: './src/index.html',
                 filename: 'index.html',
             }),
-        ],
+            isDevelopment && new ReactRefreshWebpackPlugin(),
+        ].filter(Boolean),
         resolve: {
             modules: [path.join(__dirname, 'src'), 'node_modules'],
             extensions: ['.js', '.json', '.ts', '.tsx', '.png', '.tff'],
