@@ -6,6 +6,7 @@ export interface SocialMediaProps {
         actionMessageKey: string
     }
     username: string
+    link: string
 }
 
 const socialContentMocked: SocialMediaProps[] = [
@@ -15,6 +16,7 @@ const socialContentMocked: SocialMediaProps[] = [
             actionMessageKey: 'toConnect',
         },
         username: 'Mid front-end developer',
+        link: 'https://www.linkedin.com/in/vitor-paes-2880541b2/',
     },
     {
         network: {
@@ -22,6 +24,7 @@ const socialContentMocked: SocialMediaProps[] = [
             actionMessageKey: 'messageMe',
         },
         username: '+55 (49) 98425-5974',
+        link: 'https://wa.me/5549984255974?text=Ol%C3%A1%20V%C3%ADtor.',
     },
     {
         network: {
@@ -29,6 +32,7 @@ const socialContentMocked: SocialMediaProps[] = [
             actionMessageKey: 'follow',
         },
         username: '@vitorhpaes',
+        link: 'https://www.instagram.com/vitorhpaes/',
     },
     {
         network: {
@@ -36,6 +40,7 @@ const socialContentMocked: SocialMediaProps[] = [
             actionMessageKey: 'follow',
         },
         username: '@vitor__paes',
+        link: 'https://twitter.com/vitor__paes',
     },
     {
         network: {
@@ -43,6 +48,7 @@ const socialContentMocked: SocialMediaProps[] = [
             actionMessageKey: 'mailMe',
         },
         username: 'vhspaes@gmail.com',
+        link: 'mailto:vhspaes@gmail.com',
     },
 ]
 
