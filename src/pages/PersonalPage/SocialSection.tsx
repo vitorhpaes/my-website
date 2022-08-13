@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Avatar, Button, Container, styled, Typography } from '@mui/material'
 
 import { SocialCard, Spacing } from '@ds'
@@ -55,6 +55,11 @@ const SocialSection: React.FC<SocialSectionProps> = ({
     const { themeMode } = useAppSelector((app) => app.settings)
     const { translate } = useLocale()
 
+    const handleClick = useCallback(
+        (url: string) => window.open(url, '_blank'),
+        []
+    )
+
     return (
         <SectionBackground backgroundImage={themeModeBackground[themeMode]}>
             <StyledContainer>
@@ -67,27 +72,35 @@ const SocialSection: React.FC<SocialSectionProps> = ({
                         />
                     </Spacing>
                     {alreadyActived &&
-                        socialContent.map(({ network, username }, index) => (
-                            <SocialCard
-                                key={index}
-                                animation={{
-                                    reverse: revertAnimation,
-                                    duration: (index + 1) * 0.15,
-                                }}
-                                network={network.name}
-                            >
-                                <StyledCardChildrenWrapper>
-                                    <Spacing mt="nano" ml="nano">
-                                        <Typography variant="body2">
-                                            {username}
-                                        </Typography>
-                                    </Spacing>
-                                    <Button size="small" variant="outlined">
-                                        {translate(network.actionMessageKey)}
-                                    </Button>
-                                </StyledCardChildrenWrapper>
-                            </SocialCard>
-                        ))}
+                        socialContent.map(
+                            ({ network, username, link }, index) => (
+                                <SocialCard
+                                    key={index}
+                                    animation={{
+                                        reverse: revertAnimation,
+                                        duration: (index + 1) * 0.15,
+                                    }}
+                                    network={network.name}
+                                >
+                                    <StyledCardChildrenWrapper>
+                                        <Spacing mt="nano" ml="nano">
+                                            <Typography variant="body2">
+                                                {username}
+                                            </Typography>
+                                        </Spacing>
+                                        <Button
+                                            size="small"
+                                            variant="outlined"
+                                            onClick={() => handleClick(link)}
+                                        >
+                                            {translate(
+                                                network.actionMessageKey
+                                            )}
+                                        </Button>
+                                    </StyledCardChildrenWrapper>
+                                </SocialCard>
+                            )
+                        )}
                 </SocialSectionFlexBox>
             </StyledContainer>
         </SectionBackground>
