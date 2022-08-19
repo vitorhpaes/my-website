@@ -1,6 +1,6 @@
 {
-    "welcome": "Oi, eu sou o {name}",
-    "fullstack": "Sou desenvolvedor full-stack",
+    "welcome": "Oi, sou o {name}",
+    "fullstack": "Desenvolvedor full-stack",
     "frontend": "Front-end Semi-Senior",
     "backend": "Back-end pleno",
     "madeWith": "Este site foi desenvolvido com ",
@@ -11,5 +11,7 @@
     "home": "Home",
     "social": "Redes Sociais",
     "portfolio": "Portfolio",
-    "aboutMe": "Sobre mim"
+    "aboutMe": "Sobre mim",
+    "companies": "Empresas",
+    "projects": "Projetos"
 }

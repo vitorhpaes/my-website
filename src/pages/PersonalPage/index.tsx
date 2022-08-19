@@ -10,6 +10,7 @@ import HomeSection from '@app/pages/PersonalPage/HomeSection'
 import CustomSwiperPagination from '@app/components/CustomSwiperPagination'
 import SocialSection from './SocialSection'
 import socialContentMocked from './mock/socialContent'
+import CompaniesSection from './CompaniesSection'
 
 const StyledSwiper = styled(Swiper)`
     width: 100%;
@@ -61,7 +62,9 @@ const PersonalPage: React.FC = () => {
                         socialContent={socialContentMocked}
                     />
                 </SwiperSlide>
-                <SwiperSlide>OTHER SECTION</SwiperSlide>
+                <SwiperSlide>
+                    <CompaniesSection />
+                </SwiperSlide>
             </StyledSwiper>
         </>
     )

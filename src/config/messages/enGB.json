@@ -1,6 +1,6 @@
 {
     "welcome": "Hi, I'm {name}",
-    "fullstack": "I'm a full-stack developer",
+    "fullstack": "Full-stack developer",
     "frontend": "Front-end Semi-Senior",
     "backend": "Back-end Mid",
     "madeWith": "This website was made with",
@@ -11,5 +11,7 @@
     "home": "Home",
     "social": "Social",
     "portfolio": "Portfolio",
-    "aboutMe": "About me"
+    "aboutMe": "About me",
+    "companies": "Companies",
+    "projects": "Projects"
 }
